@@ -1,9 +1,22 @@
 package main
 
 import (
+	"builder-pattern-go/pkg/builder"
 	"fmt"
 )
 
 func main() {
-	fmt.Println("Builder Pattern in Go")
+	fmt.Println("Demonstrating the Builder Pattern in Go")
+
+	// Initialize a new pizza builder
+	pizzaBuilder := builder.NewPizzaBuilder()
+
+	// Configure and build a custom pizza
+	pizza := pizzaBuilder.SetCrust("thin").
+		SetToppings([]string{"cheese", "tomatoes"}).
+		SetSize(12).
+		Build()
+
+	// Display the details of the constructed pizza
+	fmt.Printf("Constructed Pizza: %+v\n", pizza)
 }
