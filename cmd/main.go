@@ -6,18 +6,15 @@ import (
 )
 
 func main() {
-	fmt.Println("Demonstrating the Builder Pattern in Go")
+	fmt.Println("Demonstrating the Builder Pattern in Go with various builders")
 
-	// Initialize a new pizza builder
+	// Initialize a standard pizza builder
 	pizzaBuilder := builder.NewPizzaBuilder()
+	pizza := pizzaBuilder.SetCrust("thin").SetToppings([]string{"cheese", "tomatoes"}).SetSize(12).Build()
+	fmt.Printf("Standard Pizza: Crust - %s, Toppings - %v, Size - %d inches\n", pizza.Crust, pizza.Toppings, pizza.Size)
 
-	// Configure and build a custom pizza
-	pizza := pizzaBuilder.
-		SetCrust("thin").
-		SetToppings([]string{"cheese", "tomatoes"}).
-		SetSize(12).
-		Build()
-
-	// Display the details of the constructed pizza
-	fmt.Printf("Constructed Pizza: Crust - %s, Toppings - %v, Size - %d inches\n", pizza.Crust, pizza.Toppings, pizza.Size)
+	// Initialize a gourmet pizza builder
+	gourmetBuilder := builder.NewGourmetPizzaBuilder()
+	gourmetPizza := gourmetBuilder.SetCrust("wood-fired").SetToppings([]string{"goat cheese", "sun-dried tomatoes", "arugula"}).SetSize(14).Build()
+	fmt.Printf("Gourmet Pizza: Crust - %s, Toppings - %v, Size - %d inches\n", gourmetPizza.Crust, gourmetPizza.Toppings, gourmetPizza.Size)
 }
